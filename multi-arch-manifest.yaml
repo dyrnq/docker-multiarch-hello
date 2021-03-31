@@ -1,0 +1,25 @@
+image: dyrnq/multiarch-hello
+manifests:
+  - image: dyrnq/multiarch-hello
+    platform:
+      architecture: amd64
+      os: linux
+  - image: dyrnq/multiarch-hello
+    platform:
+      architecture: 386
+      os: linux
+  - image: dyrnq/multiarch-hello
+    platform:
+      architecture: arm
+      os: linux
+      variant: v6
+  - image: dyrnq/multiarch-hello
+    platform:
+      architecture: arm
+      os: linux
+      variant: v7
+  - image: dyrnq/multiarch-hello
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8
