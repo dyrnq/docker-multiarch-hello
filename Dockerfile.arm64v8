@@ -2,7 +2,7 @@ FROM arm64v8/golang:1.16.2-buster as build
 
 # Add QEMU
 COPY qemu-aarch64-static /usr/bin/qemu-aarch64-static
-RUN  chmod +x /usr/bin/qemu-aarch64-static
+#RUN  chmod +x /usr/bin/qemu-aarch64-static
 
 WORKDIR /src
 
@@ -10,7 +10,7 @@ WORKDIR /src
 #COPY go.* ./
 COPY *.go ./
 
-RUN  GOOS=linux GOARCH=arm64 BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
+RUN RUN ls -l /usr/bin/; GOOS=linux GOARCH=arm64 BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
 
 
 FROM arm64v8/debian:buster
