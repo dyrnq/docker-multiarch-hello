@@ -13,7 +13,7 @@ func main() {
 		io.WriteString(w, "Hello, world!\n")
 	}
 
-	http.HandleFunc("/hello", helloHandler)
-	log.Println("Listing for requests at http://localhost:8000/hello")
+	http.HandleFunc("/", helloHandler)
+	log.Println("Listing for requests at http://localhost:8000/")
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
