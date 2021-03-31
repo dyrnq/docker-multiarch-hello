@@ -17,8 +17,6 @@ FROM arm64v8/debian:buster
 
 COPY --from=build  /src/hello-linux-arm64 /usr/bin/hello
 
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN chmod +x /usr/bin/hello
+RUN ls -l /usr/bin; chmod +x /usr/bin/hello
 
 CMD [ "/usr/bin/hello" ]
