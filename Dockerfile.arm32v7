@@ -10,7 +10,7 @@ WORKDIR /src
 #COPY go.* ./
 COPY *.go ./
 
-RUN RUN ls -l /usr/bin/; GOOS=linux GOARCH=arm BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
+RUN ls -l /usr/bin/; GOOS=linux GOARCH=arm BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
 
 
 FROM arm32v7/debian:buster
