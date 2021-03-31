@@ -10,15 +10,11 @@ WORKDIR /src
 #COPY go.* ./
 COPY *.go ./
 
-RUN GOOS=linux GOARCH=386 BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=386 GO111MODULE=off go build -v -ldflags="-s -w" -o hello-linux-386; chmod +x hello-linux-386; ls -l /src; 
 
 
 FROM i386/debian:buster
 
 COPY --from=build  /src/hello-linux-386 /usr/bin/hello
-
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN chmod +x /usr/bin/hello
 
 CMD [ "/usr/bin/hello" ]
