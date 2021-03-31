@@ -2,6 +2,7 @@ FROM i386/golang:1.16.2-buster as build
 
 # Add QEMU
 COPY qemu-i386-static /usr/bin/qemu-i386-static
+RUN  chmod +x /usr/bin/qemu-i386-static
 
 
 WORKDIR /src
