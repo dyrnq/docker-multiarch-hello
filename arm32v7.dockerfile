@@ -19,7 +19,7 @@ COPY --from=builder qemu-arm-static /usr/bin
 WORKDIR /src
 
 # go.mod and go.sum if exists
-COPY go.* ./
+#COPY go.* ./
 COPY *.go ./
 
 RUN  GOOS=linux GOARCH=arm BIN_FILENAME="hello-${GOOS}-${GOARCH}${GOARM}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
