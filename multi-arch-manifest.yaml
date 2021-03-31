@@ -8,11 +8,11 @@ manifests:
     platform:
       architecture: 386
       os: linux
-  - image: dyrnq/multiarch-hello:arm32v6
-    platform:
-      architecture: arm
-      os: linux
-      variant: v6
+  # - image: dyrnq/multiarch-hello:arm32v6
+  #   platform:
+  #     architecture: arm
+  #     os: linux
+  #     variant: v6
   - image: dyrnq/multiarch-hello:arm32v7
     platform:
       architecture: arm
