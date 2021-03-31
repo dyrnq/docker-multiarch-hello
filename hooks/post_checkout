@@ -5,7 +5,9 @@ echo ${BUILD_ARCH}
 
 [ "${BUILD_ARCH}" == "Dockerfile" ] && { echo 'qemu-user-static: Download not required for current arch'; exit 0; }
 
-if [ "${BUILD_ARCH}" == "arm64v8" ]; then
+if [ "${BUILD_ARCH}" == "amd64" ]; then
+    exit 0
+elif [ "${BUILD_ARCH}" == "arm64v8" ]; then
     echo 'arm64'
     QEMU_USER_STATIC_ARCH=$([ "${BUILD_ARCH}" == "arm64v8" ] && echo "aarch64" || echo "${BUILD_ARCH}")
 elif [ "${BUILD_ARCH}" == "i386" ]; then
