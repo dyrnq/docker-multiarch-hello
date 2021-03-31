@@ -1,0 +1,24 @@
+FROM arm64v8/golang:1.16.2-buster as build
+
+# Add QEMU
+COPY qemu-aarch64-static /usr/bin/qemu-aarch64-static
+
+
+WORKDIR /src
+
+# go.mod and go.sum if exists
+#COPY go.* ./
+COPY *.go ./
+
+RUN  GOOS=linux GOARCH=arm64 BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
+
+
+FROM arm64v8/debian:buster
+
+COPY --from=build  /src/hello-linux-arm64 /usr/bin/hello
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN chmod +x /usr/bin/hello
+
+CMD [ "/usr/bin/hello" ]

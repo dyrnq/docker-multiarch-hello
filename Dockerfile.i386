@@ -1,0 +1,24 @@
+FROM i386/golang:1.16.2-buster as build
+
+# Add QEMU
+COPY qemu-i386-static /usr/bin/qemu-i386-static
+
+
+WORKDIR /src
+
+# go.mod and go.sum if exists
+#COPY go.* ./
+COPY *.go ./
+
+RUN  GOOS=linux GOARCH=386 BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}
+
+
+FROM i386/debian:buster
+
+COPY --from=build  /src/hello-linux-386 /usr/bin/hello
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN chmod +x /usr/bin/hello
+
+CMD [ "/usr/bin/hello" ]
