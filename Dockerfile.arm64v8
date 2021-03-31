@@ -10,13 +10,11 @@ WORKDIR /src
 #COPY go.* ./
 COPY *.go ./
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 GO111MODULE=off go build -v -ldflags="-s -w" -o hello-linux-arm64; ls -l /src
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 GO111MODULE=off go build -v -ldflags="-s -w" -o hello-linux-arm64; chmod +x hello-linux-arm64; ls -l /src; 
 
 
 FROM arm64v8/debian:buster
 
 COPY --from=build  /src/hello-linux-arm64 /usr/bin/hello
-
-RUN ls -l /usr/bin; chmod +x /usr/bin/hello
 
 CMD [ "/usr/bin/hello" ]
