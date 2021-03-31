@@ -11,7 +11,7 @@ WORKDIR /src
 COPY *.go ./
 
 #RUN GOOS=linux GOARCH=arm BIN_FILENAME="hello-${GOOS}-${GOARCH}"; GO111MODULE=off go build -ldflags="-s -w" -o ${BIN_FILENAME}; ls -l /src
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm GO111MODULE=off go -v build -ldflags="-s -w" -o hello-linux-arm; ls -l /src
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm GO111MODULE=off go build -v -ldflags="-s -w" -o hello-linux-arm; ls -l /src
 
 FROM arm32v7/debian:buster
 
