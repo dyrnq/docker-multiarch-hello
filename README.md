@@ -6,7 +6,7 @@ This example also only relies on Docker Hub to build all images, including the A
 
 ## Automated builds via Docker Hub
 
-The Docker Hub [Custom build phase hooks](https://docs.docker.com/docker-hub/builds/advanced/#custom-build-phase-hooks) allow in combination with [QEMU](https://www.qemu.org) an entirely automated build of the Docker images via Docker Hub for all major platforms - as it is used in this repository.
+The Docker Hub [Custom build phase hooks](https://docs.docker.com/docker-hub/builds/advanced/#custom-build-phase-hooks) allow in combination with [QEMU](https://www.qemu.org) an entirely automated build of the Docker images via Docker Hub for all major platforms.
 
 To see how it's done in this repository, see
 
