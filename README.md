@@ -10,7 +10,7 @@ The Docker Hub [Custom build phase hooks](https://docs.docker.com/docker-hub/bui
 
 To see how it's done in this repository, see
 
-- Prepare QEMU in a custom build phase hook, [hooks/pre_build](./hooks/pre_build)
+- Prepare QEMU in a custom build phase hook, [hooks/pre_build](./hooks/pre_build) and [hooks/post_checkout](./hooks/post_checkout)
 - Dockerfile to build an `arm32v7` image on `x86_64` (Docker Hub), [Dockerfile.arm32v7](./Dockerfile.arm32v7)
 - Dockerfile to build an `arm64v8` image on `x86_64` (Docker Hub), [Dockerfile.arm64v8](./Dockerfile.arm64v8)
 
